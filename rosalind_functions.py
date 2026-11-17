@@ -149,3 +149,21 @@ def restriction_sites(fasta_data):
                     results += f"{i+1} {length}\n"
 
     return results.strip()
+
+# Rosalind TRAN Transitions and Transversions
+def transition_transversion_ratio(seq1, seq2):
+    i = 0
+    transitions = 0
+
+    while i < len(seq1):
+        pair = seq1[i] + seq2[i]
+
+        if pair in ['AG', 'GA', 'CT', 'TC']:
+            transitions += 1
+
+        i += 1
+
+    mutations = mutation_counter(seq1, seq2)
+    transversions = mutations - transitions
+
+    return transitions / transversions
